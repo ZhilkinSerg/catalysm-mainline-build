@@ -11,7 +11,7 @@ BUILD_VER=$( git describe --tags --always --dirty --match "[0-9A-Z]*.[0-9A-Z]*" 
 MAJOR_VER=$( echo $BUILD_VER | cut -d '-' -f1 )
 echo "This build is version ${BUILD_VER}, and the time is $(date)"
 
-if [[ -z "${TX_RESOURCE}" ]]; then
+if [[ -n "${TX_RESOURCE}" ]]; then
     echo "Pulling translations from Transifex"
     set +e
     tx pull --all --force --minimum-perc 80 --resource "${TX_RESOURCE}"
